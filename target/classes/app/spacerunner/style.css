@@ -1,0 +1,29 @@
+.root {
+    -fx-background-image: url("assets/deep_blue.png");
+}
+
+#skor {
+    -fx-background-image: url("assets/red_button.png");
+}
+
+#play {
+    -fx-background-image: url("assets/red_button.png");
+}
+
+#kredit {
+    -fx-background-image: url("assets/red_button.png");
+}
+
+#bantuan {
+    -fx-background-image: url("assets/red_button.png");
+}
+
+#keluar {
+    -fx-background-image: url("assets/red_button.png");
+}
+
+#panelSkor {
+    -fx-background-image: url("assets/red_panel.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}
