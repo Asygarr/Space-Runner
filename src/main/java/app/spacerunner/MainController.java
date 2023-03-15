@@ -2,14 +2,17 @@ package app.spacerunner;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,14 +22,15 @@ public class MainController implements Initializable {
     private Button play, skor, bantuan, kredit, keluar;
 
     @FXML
-    private AnchorPane panelSkor;
+    private AnchorPane panelSkor, panelBantuan, panelKredit, scaneSembunyi;
 
     private boolean isHidden = true;
+    private Stage stage;
 
-    public void skorOnAction(ActionEvent event) {
+    private void pindahScene(AnchorPane panel) {
         TranslateTransition transisi = new TranslateTransition();
         transisi.setDuration(Duration.seconds(0.3));
-        transisi.setNode(this.panelSkor);
+        transisi.setNode(panel);
 
         if (isHidden) {
             transisi.setToX(-767);
@@ -38,77 +42,62 @@ public class MainController implements Initializable {
         transisi.play();
     }
 
+    private void munculkanScene(AnchorPane panel) {
+        if (scaneSembunyi != null) {
+            pindahScene(scaneSembunyi);
+        }
+        pindahScene(panel);
+        scaneSembunyi = panel;
+    }
+
+    public void playOnAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("game.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    public void keluarOnAction() {
+        stage = (Stage) keluar.getScene().getWindow();
+        stage.close();
+    }
+
+    public void skorOnAction() {
+        munculkanScene(panelSkor);
+    }
+
+    public void bantuanOnAction() {
+        munculkanScene(panelBantuan);
+    }
+
+    public void kreditOnAction() {
+        munculkanScene(panelKredit);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        play.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                play.setEffect(new javafx.scene.effect.DropShadow());
-            }
-        });
+        play.setOnMouseEntered(mouseEvent -> play.setEffect(new javafx.scene.effect.DropShadow()));
 
-        play.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                play.setEffect(null);
-            }
-        });
+        play.setOnMouseExited(mouseEvent -> play.setEffect(null));
 
-        skor.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                skor.setEffect(new javafx.scene.effect.DropShadow());
-            }
-        });
+        skor.setOnMouseEntered(mouseEvent -> skor.setEffect(new javafx.scene.effect.DropShadow()));
 
-        skor.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                skor.setEffect(null);
-            }
-        });
+        skor.setOnMouseExited(mouseEvent -> skor.setEffect(null));
 
-        bantuan.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                bantuan.setEffect(new javafx.scene.effect.DropShadow());
-            }
-        });
+        bantuan.setOnMouseEntered(mouseEvent -> bantuan.setEffect(new javafx.scene.effect.DropShadow()));
 
-        bantuan.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                bantuan.setEffect(null);
-            }
-        });
+        bantuan.setOnMouseExited(mouseEvent -> bantuan.setEffect(null));
 
-        kredit.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                kredit.setEffect(new javafx.scene.effect.DropShadow());
-            }
-        });
+        kredit.setOnMouseEntered(mouseEvent -> kredit.setEffect(new javafx.scene.effect.DropShadow()));
 
-        kredit.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                kredit.setEffect(null);
-            }
-        });
+        kredit.setOnMouseExited(mouseEvent -> kredit.setEffect(null));
 
-        keluar.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                keluar.setEffect(new javafx.scene.effect.DropShadow());
-            }
-        });
+        keluar.setOnMouseEntered(mouseEvent -> keluar.setEffect(new javafx.scene.effect.DropShadow()));
 
-        keluar.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                keluar.setEffect(null);
-            }
-        });
+        keluar.setOnMouseExited(mouseEvent -> keluar.setEffect(null));
     }
 }

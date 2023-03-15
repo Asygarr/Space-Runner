@@ -8,8 +8,7 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.spacerunner.MainController">
    <children>
-      <AnchorPane fx:id="panelSkor" layoutX="1024.0" layoutY="74.0" prefHeight="251.0" prefWidth="370.0" />
-      <Button fx:id="play" layoutX="36.0" layoutY="46.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="191.0" text="PLAY" textAlignment="CENTER">
+      <Button fx:id="play" layoutX="36.0" layoutY="46.0" mnemonicParsing="false" onAction="#playOnAction" prefHeight="46.0" prefWidth="191.0" text="PLAY" textAlignment="CENTER">
          <font>
             <Font name="Copperplate Gothic Bold" size="14.0" />
          </font>
@@ -19,17 +18,17 @@
             <Font name="Copperplate Gothic Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="bantuan" layoutX="36.0" layoutY="162.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="191.0" text="BANTUAN" textAlignment="CENTER">
+      <Button fx:id="bantuan" layoutX="36.0" layoutY="162.0" mnemonicParsing="false" onAction="#bantuanOnAction" prefHeight="46.0" prefWidth="191.0" text="BANTUAN" textAlignment="CENTER">
          <font>
             <Font name="Copperplate Gothic Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="kredit" layoutX="36.0" layoutY="222.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="191.0" text="KREDIT" textAlignment="CENTER">
+      <Button fx:id="kredit" layoutX="36.0" layoutY="222.0" mnemonicParsing="false" onAction="#kreditOnAction" prefHeight="46.0" prefWidth="191.0" text="KREDIT" textAlignment="CENTER">
          <font>
             <Font name="Copperplate Gothic Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="keluar" layoutX="36.0" layoutY="283.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="191.0" text="KELUAR" textAlignment="CENTER">
+      <Button fx:id="keluar" layoutX="36.0" layoutY="283.0" mnemonicParsing="false" onAction="#keluarOnAction" prefHeight="46.0" prefWidth="191.0" text="KELUAR" textAlignment="CENTER">
          <font>
             <Font name="Copperplate Gothic Bold" size="14.0" />
          </font>
@@ -39,5 +38,8 @@
             <Image url="@assets/space_runner.png" />
          </image>
       </ImageView>
+      <AnchorPane fx:id="panelBantuan" layoutX="1024.0" layoutY="74.0" prefHeight="251.0" prefWidth="370.0" />
+      <AnchorPane fx:id="panelKredit" layoutX="1024.0" layoutY="74.0" prefHeight="251.0" prefWidth="370.0" />
+      <AnchorPane fx:id="panelSkor" layoutX="1024.0" layoutY="74.0" prefHeight="251.0" prefWidth="370.0" />
    </children>
 </AnchorPane>

@@ -1,28 +1,52 @@
 .root {
     -fx-background-image: url("assets/deep_blue.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
 }
 
 #skor {
     -fx-background-image: url("assets/red_button.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
 }
 
 #play {
     -fx-background-image: url("assets/red_button.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
 }
 
 #kredit {
     -fx-background-image: url("assets/red_button.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
 }
 
 #bantuan {
     -fx-background-image: url("assets/red_button.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
 }
 
 #keluar {
     -fx-background-image: url("assets/red_button.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
 }
 
 #panelSkor {
+    -fx-background-image: url("assets/red_panel.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}
+
+#panelKredit {
+    -fx-background-image: url("assets/red_panel.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}
+
+#panelBantuan {
     -fx-background-image: url("assets/red_panel.png");
     -fx-background-repeat: no-repeat;
     -fx-background-size: 100% 100%;

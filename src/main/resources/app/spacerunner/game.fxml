@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="panelGame" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.spacerunner.GameController">
+   <children>
+      <ImageView fx:id="ship" fitHeight="42.0" fitWidth="40.0" layoutX="305.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/blue_life.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="NONE" />
+         </cursor>
+      </ImageView>
+      <Label fx:id="poinLabel" layoutX="6.0" prefHeight="32.0" prefWidth="85.0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Copperplate Gothic Bold" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
