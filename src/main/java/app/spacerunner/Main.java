@@ -24,10 +24,3 @@ public class Main extends Application {
         launch();
     }
 }
-
-
-//    BackgroundImage myBI= new BackgroundImage(new Image("assets/red_button.png",32,32,false,true),
-//            BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-//            BackgroundSize.DEFAULT);
-////then you set to your node
-//    myContainer.setBackground(new Background(myBI));

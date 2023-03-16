@@ -7,9 +7,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="panelGame" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.spacerunner.GameController">
+<AnchorPane fx:id="panelGame" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.spacerunner.GameController">
    <children>
+      <AnchorPane fx:id="bgGame1" prefHeight="700.0" prefWidth="500.0" stylesheets="@style.css" />
+      <AnchorPane fx:id="bgGame2" layoutY="-700.0" prefHeight="700.0" prefWidth="500.0" stylesheets="@style.css" />
       <ImageView fx:id="ship" fitHeight="50.0" fitWidth="50.0" layoutX="225.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/blue_life.png" />
@@ -17,6 +18,56 @@
          <cursor>
             <Cursor fx:constant="NONE" />
          </cursor>
+      </ImageView>
+      <ImageView fx:id="meteorBrown1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/meteor_brown.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="meteorBrown2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/meteor_brown.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="meteorBrown3" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/meteor_brown.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="meteorBrown4" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/meteor_brown.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="meteorGrey1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/meteor_grey.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="meteorGrey2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/meteor_grey.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="meteorGrey3" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/meteor_grey.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="meteorGrey4" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/meteor_grey.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="starGold1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/star_gold.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="starGold2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/star_gold.png" />
+         </image>
       </ImageView>
       <Label fx:id="poinLabel" layoutX="14.0" layoutY="14.0" prefHeight="32.0" prefWidth="85.0" text="POIN : " textAlignment="CENTER" textFill="WHITE">
          <font>

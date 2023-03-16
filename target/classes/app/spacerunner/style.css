@@ -4,6 +4,18 @@
     -fx-background-size: 100% 100%;
 }
 
+#bgGame1 {
+    -fx-background-image: url("assets/deep_blue.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}
+
+#bgGame2 {
+    -fx-background-image: url("assets/deep_blue.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}
+
 #skor {
     -fx-background-image: url("assets/red_button.png");
     -fx-background-repeat: no-repeat;
