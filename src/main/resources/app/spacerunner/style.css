@@ -63,3 +63,21 @@
     -fx-background-repeat: no-repeat;
     -fx-background-size: 100% 100%;
 }
+
+#infoLabel {
+    -fx-background-image: url("assets/red_info_label.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}
+
+#gameOverPanel {
+    -fx-background-image: url("assets/red_panel.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}
+
+#kembaliHome {
+    -fx-background-image: url("assets/red_small_panel.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}
