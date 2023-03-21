@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.spacerunner.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#gameOnKeyPressed" onKeyReleased="#gameOnKeyReleased" prefHeight="700.0" prefWidth="500.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.spacerunner.GameController">
    <children>
       <AnchorPane fx:id="bgGame1" prefHeight="700.0" prefWidth="500.0" stylesheets="@style.css" />
       <AnchorPane fx:id="bgGame2" layoutY="-700.0" prefHeight="700.0" prefWidth="500.0" stylesheets="@style.css" />
@@ -83,7 +83,7 @@
                   <Font name="Copperplate Gothic Bold" size="19.0" />
                </font>
             </Label>
-            <Button fx:id="kembaliHome" layoutX="122.0" layoutY="207.0" mnemonicParsing="false" onAction="#kembaliOnAction" prefHeight="43.0" prefWidth="202.0" text="Kembali">
+            <Button id="kembaliHome" layoutX="122.0" layoutY="207.0" mnemonicParsing="false" onAction="#kembaliOnAction" prefHeight="43.0" prefWidth="202.0" text="Kembali">
                <font>
                   <Font size="14.0" />
                </font>

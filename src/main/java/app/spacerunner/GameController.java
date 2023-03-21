@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
     @FXML
-    private AnchorPane gamePane, bgGame1, bgGame2, gameOverPanel;
+    private AnchorPane bgGame1, bgGame2, gameOverPanel;
     @FXML
     private ImageView ship;
     @FXML
@@ -35,7 +36,8 @@ public class GameController implements Initializable {
     private int angle;
     private double eventShip;
     private double posisiShip;
-    private boolean gameStart = true;
+    private double shipBegeser;
+    private boolean gameStart;
     private AnimationTimer timer;
 
     Random randomPosisiMeteor = new Random();
@@ -45,6 +47,7 @@ public class GameController implements Initializable {
         this.angle = 0;
         this.eventShip = 0;
         this.posisiShip = 0;
+        this.gameStart = true;
     }
 
     public void kembaliOnAction(ActionEvent event) throws IOException {
@@ -62,6 +65,26 @@ public class GameController implements Initializable {
         stage.show();
     }
 
+    public void gameOnKeyPressed(KeyEvent event) {
+
+        if (gameStart) {
+            switch (event.getCode()) {
+                case A:
+                    eventShip = -5;
+                    shipBegeser = ship.getLayoutX() - 25;
+                    break;
+                case D:
+                    eventShip = 5;
+                    shipBegeser = ship.getLayoutX() + 25;
+                    break;
+            }
+        }
+    }
+
+    public void gameOnKeyReleased() {
+        eventShip = 0;
+    }
+
     private void setPoint() {
         point += 1;
         poinLabel.setText("Poin : " + point);
@@ -77,11 +100,11 @@ public class GameController implements Initializable {
         gameOverPanel.setLayoutX(27);
     }
 
-    private void setStop(ImageView ship, ImageView meteor, AnimationTimer timer) {
-        if (ship.getLayoutX() < meteor.getLayoutX() + 50 &&
-                ship.getLayoutX() + 50 > meteor.getLayoutX() &&
-                ship.getLayoutY() < meteor.getLayoutY() + 50 &&
-                ship.getLayoutY() + 50 > meteor.getLayoutY()) {
+    private void gameOver(ImageView ship, ImageView meteor, AnimationTimer timer) {
+        if (ship.getLayoutX() < meteor.getLayoutX() + 40 &&
+                ship.getLayoutX() + 40 > meteor.getLayoutX() &&
+                ship.getLayoutY() < meteor.getLayoutY() + 40 &&
+                ship.getLayoutY() + 40 > meteor.getLayoutY()) {
             timer.stop();
             panelGameOver();
             gameStart = false;
@@ -160,6 +183,10 @@ public class GameController implements Initializable {
     }
 
     private void animasiShip() {
+        if (shipBegeser > 0 && shipBegeser < 450) {
+            ship.setLayoutX(shipBegeser);
+        }
+
         if (posisiShip > eventShip) {
             if (angle > -30) {
                 angle -= 5;
@@ -181,15 +208,15 @@ public class GameController implements Initializable {
             ship.setRotate(angle);
         }
 
-        setStop(ship, meteorGrey1, timer);
-        setStop(ship, meteorGrey2, timer);
-        setStop(ship, meteorGrey3, timer);
-        setStop(ship, meteorGrey4, timer);
+        gameOver(ship, meteorGrey1, timer);
+        gameOver(ship, meteorGrey2, timer);
+        gameOver(ship, meteorGrey3, timer);
+        gameOver(ship, meteorGrey4, timer);
 
-        setStop(ship, meteorBrown1, timer);
-        setStop(ship, meteorBrown2, timer);
-        setStop(ship, meteorBrown3, timer);
-        setStop(ship, meteorBrown4, timer);
+        gameOver(ship, meteorBrown1, timer);
+        gameOver(ship, meteorBrown2, timer);
+        gameOver(ship, meteorBrown3, timer);
+        gameOver(ship, meteorBrown4, timer);
 
         addPoin(ship, starGold1);
         addPoin(ship, starGold2);
@@ -220,17 +247,6 @@ public class GameController implements Initializable {
             }
         };
         timer.start();
-
-        if (gameStart) {
-            gamePane.setOnMouseDragged(event -> {
-                posisiShip = ship.getLayoutX();
-                eventShip = event.getX();
-                if (event.getX() > 0 && eventShip < 450) {
-                    ship.setLayoutX(event.getX());
-                }
-            });
-        }
-
 
     }
 }
