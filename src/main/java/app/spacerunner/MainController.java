@@ -30,7 +30,6 @@ public class MainController implements Initializable {
     private AnchorPane panelSkor, panelBantuan, panelKredit, scaneSembunyi;
 
     private Stage stage;
-    private int myPoint;
     private boolean isHidden = true;
 
     private void pindahScene(AnchorPane panel) {
