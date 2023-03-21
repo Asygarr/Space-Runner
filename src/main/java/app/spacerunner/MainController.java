@@ -8,10 +8,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -22,10 +24,14 @@ public class MainController implements Initializable {
     private Button play, skor, bantuan, kredit, keluar;
 
     @FXML
+    private Label skorTertinggi;
+
+    @FXML
     private AnchorPane panelSkor, panelBantuan, panelKredit, scaneSembunyi;
 
-    private boolean isHidden = true;
     private Stage stage;
+    private int myPoint;
+    private boolean isHidden = true;
 
     private void pindahScene(AnchorPane panel) {
         TranslateTransition transisi = new TranslateTransition();
@@ -50,18 +56,18 @@ public class MainController implements Initializable {
         scaneSembunyi = panel;
     }
 
-    public void playOnAction(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
-            stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setY(10);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void playOnAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
+        stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setY(10);
+        stage.show();
+    }
+
+    public void getPoint(int poin) {
+        skorTertinggi.setText("Point Tertinggi : " + poin);
     }
 
     public void keluarOnAction() {

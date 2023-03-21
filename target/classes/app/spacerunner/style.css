@@ -81,3 +81,9 @@
     -fx-background-repeat: no-repeat;
     -fx-background-size: 100% 100%;
 }
+
+#poinLabel {
+    -fx-background-image: url("assets/red_info_label.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}

@@ -1,25 +1,33 @@
 package app.spacerunner;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class GameController implements Initializable {
+public class myController implements Initializable {
+
     @FXML
-    private AnchorPane gamePane, bgGame1, bgGame2, gameOverPanel;
+    private Button play, skor, bantuan, kredit, keluar;
+    @FXML
+    private Label skorTertinggi;
+    @FXML
+    private AnchorPane panelSkor, panelBantuan, panelKredit, scaneSembunyi;
+    @FXML
+    private AnchorPane mainPane, gamePane, bgGame1, bgGame2, gameOverPanel;
     @FXML
     private ImageView ship;
     @FXML
@@ -31,6 +39,9 @@ public class GameController implements Initializable {
     @FXML
     private Label poinLabel, poin;
 
+    private boolean isHidden = true;
+
+    // Game
     private int point;
     private int angle;
     private double eventShip;
@@ -40,26 +51,65 @@ public class GameController implements Initializable {
 
     Random randomPosisiMeteor = new Random();
 
-    public GameController() {
+    public myController() {
         this.point = 0;
         this.angle = 0;
         this.eventShip = 0;
         this.posisiShip = 0;
     }
 
+    // Main
+    private void pindahScene(AnchorPane panel) {
+        TranslateTransition transisi = new TranslateTransition();
+        transisi.setDuration(Duration.seconds(0.3));
+        transisi.setNode(panel);
+
+        if (isHidden) {
+            transisi.setToX(-767);
+            isHidden = false;
+        } else {
+            transisi.setToX(0);
+            isHidden = true;
+        }
+        transisi.play();
+    }
+
+    private void munculkanScene(AnchorPane panel) {
+        if (scaneSembunyi != null) {
+            pindahScene(scaneSembunyi);
+        }
+        pindahScene(panel);
+        scaneSembunyi = panel;
+    }
+
+    public void playOnAction(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("game.fxml"));
+        gamePane.setClip(pane);
+    }
+
+    public void keluarOnAction() {
+        // Main
+        Stage stage = (Stage) keluar.getScene().getWindow();
+        stage.close();
+    }
+
+    public void skorOnAction() {
+        munculkanScene(panelSkor);
+    }
+
+    public void bantuanOnAction() {
+        munculkanScene(panelBantuan);
+    }
+
+    public void kreditOnAction() {
+        munculkanScene(panelKredit);
+    }
+
+
+    // Game
     public void kembaliOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-
-        // Mengirimkan data poin ke MainController
-        MainController main = loader.getController();
-        main.getPoint(point);
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("main.fxml"));
+        mainPane.setClip(pane);
     }
 
     private void setPoint() {
@@ -84,6 +134,7 @@ public class GameController implements Initializable {
                 ship.getLayoutY() + 50 > meteor.getLayoutY()) {
             timer.stop();
             panelGameOver();
+            skorTertinggi.setText("Skor Tertinggi : " + point);
             gameStart = false;
         }
     }
@@ -231,6 +282,25 @@ public class GameController implements Initializable {
             });
         }
 
+        play.setOnMouseEntered(mouseEvent -> play.setEffect(new javafx.scene.effect.DropShadow()));
 
+        play.setOnMouseExited(mouseEvent -> play.setEffect(null));
+
+        skor.setOnMouseEntered(mouseEvent -> skor.setEffect(new javafx.scene.effect.DropShadow()));
+
+        skor.setOnMouseExited(mouseEvent -> skor.setEffect(null));
+
+        bantuan.setOnMouseEntered(mouseEvent -> bantuan.setEffect(new javafx.scene.effect.DropShadow()));
+
+        bantuan.setOnMouseExited(mouseEvent -> bantuan.setEffect(null));
+
+        kredit.setOnMouseEntered(mouseEvent -> kredit.setEffect(new javafx.scene.effect.DropShadow()));
+
+        kredit.setOnMouseExited(mouseEvent -> kredit.setEffect(null));
+
+        keluar.setOnMouseEntered(mouseEvent -> keluar.setEffect(new javafx.scene.effect.DropShadow()));
+
+        keluar.setOnMouseExited(mouseEvent -> keluar.setEffect(null));
     }
+
 }
