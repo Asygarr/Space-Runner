@@ -15,7 +15,6 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -24,7 +23,7 @@ public class MainController implements Initializable {
     private Button play, skor, bantuan, kredit, keluar;
 
     @FXML
-    private Label skorTertinggi;
+    private Label skorLabel;
 
     @FXML
     private AnchorPane panelSkor, panelBantuan, panelKredit, scaneSembunyi;
@@ -56,8 +55,9 @@ public class MainController implements Initializable {
     }
 
     public void playOnAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
         stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
@@ -66,7 +66,7 @@ public class MainController implements Initializable {
     }
 
     public void getPoint(int poin) {
-        skorTertinggi.setText("Point Tertinggi : " + poin);
+        skorLabel.setText(String.valueOf(poin));
     }
 
     public void keluarOnAction() {

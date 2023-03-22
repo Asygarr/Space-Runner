@@ -66,7 +66,6 @@ public class GameController implements Initializable {
     }
 
     public void gameOnKeyPressed(KeyEvent event) {
-
         if (gameStart) {
             switch (event.getCode()) {
                 case A:
@@ -112,10 +111,10 @@ public class GameController implements Initializable {
     }
 
     private void addPoin(ImageView ship, ImageView star) {
-        if (ship.getLayoutX() < star.getLayoutX() + 50 &&
-                ship.getLayoutX() + 50 > star.getLayoutX() &&
-                ship.getLayoutY() < star.getLayoutY() + 50 &&
-                ship.getLayoutY() + 50 > star.getLayoutY()) {
+        if (ship.getLayoutX() < star.getLayoutX() + 40 &&
+                ship.getLayoutX() + 40 > star.getLayoutX() &&
+                ship.getLayoutY() < star.getLayoutY() + 40 &&
+                ship.getLayoutY() + 40 > star.getLayoutY()) {
             setRandomPosisi(star);
             setPoint();
         }

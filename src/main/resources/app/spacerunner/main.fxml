@@ -45,9 +45,9 @@
                   <Font name="Copperplate Gothic Bold" size="28.0" />
                </font>
             </Label>
-            <Label fx:id="skorTertinggi" alignment="CENTER" layoutX="14.0" layoutY="63.0" prefHeight="27.0" prefWidth="342.0" text="SKOR TERTINGGI : 0">
+            <Label fx:id="skorLabel" alignment="CENTER" layoutX="14.0" layoutY="63.0" prefHeight="27.0" prefWidth="342.0" text="0">
                <font>
-                  <Font name="Copperplate Gothic Bold" size="15.0" />
+                  <Font name="Copperplate Gothic Bold" size="29.0" />
                </font>
             </Label>
          </children></AnchorPane>
